@@ -34,21 +34,28 @@ It includes:
 ## Usage
 
 ```hcl
+## Usage
+
+```hcl
 module "account_hardening" {
-  source = "./terraform-aws-account-hardening"
+  source = "git::https://github.com/jessedye/terraform.git//modules/account-hardening?ref=main"
 
   cloudtrail_name        = "organization-cloudtrail"
   cloudtrail_bucket_name = "org-cloudtrail-logs-bucket"
 
-  # Optional feature flags
-  enable_guardduty               = true
-  enable_securityhub             = true
-  enable_access_analyzer         = true
-  enable_mfa_enforcement         = true
-  enable_root_account_monitoring = true
-  enable_ebs_default_encryption  = true
-  enable_s3_bucket_encryption    = true
+  # Optional feature flags (default true)
+  enable_password_policy           = true
+  enable_cloudtrail                = true
+  enable_config_recorder           = true
+  enable_guardduty                 = true
+  enable_securityhub               = true
+  enable_access_analyzer           = true
+  enable_mfa_enforcement           = true
+  enable_root_account_monitoring   = true
+  enable_ebs_default_encryption    = true
+  enable_s3_bucket_encryption      = true
 }
+
 ```
 
 
