@@ -1,17 +1,13 @@
-CONTRIBUTING.md
-===============
+# Contributing to aquia-inc/terraform
 
-Contributing to [Project Name]
-------------------------------
-
-Thank you for your interest in contributing to [Project Name]! We're excited to have you as part of our growing community. This document outlines the guidelines and best practices for contributing to this project.
+Thank you for your interest in contributing to Aquia's Terraform collection of modeuls! We're excited to have you as part of our growing community. This document outlines the guidelines and best practices for contributing to this project.
 
 ## Table of Contents
 * [Code of Conduct](#code-of-conduct)
+* [Pull Requests](#pull-requests)
 * [Issues](#issues)
     * [Bug Reports](#bug-reports)
     * [Feature Requests](#feature-requests)
-* [Pull Requests](#pull-requests)
 * [Coding Standards](#coding-standards)
 * [Testing](#testing)
 * [Documentation](#documentation)
@@ -20,6 +16,24 @@ Thank you for your interest in contributing to [Project Name]! We're excited to 
 ## Code of Conduct
 
 All contributors to this project are expected to follow our [Code of Conduct][code-of-conduct]. By participating in this project, you agree to abide by its terms.
+
+## Pull Requests
+
+We follow Github Flow for our codebase, but with feature branches existing on personal _forks_. 
+
+1. Fork this repo into your own account or other organization. All of your feature branches will be made on _your fork_.
+1. On your fork, create a new branch from the latest `main` branch for each new feature or bug fix. Use a descriptive branch name that reflects the changes being made.
+2.  Keep your changes focused and limited to a single feature or bug fix. If you find another issue while working on your branch, create a new issue and a separate branch for it.
+4.  Sign your commits using GPG. This adds an extra layer of security and ensures the authenticity of your contributions (non-repudiation). Follow the [GitHub documentation on signing commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits) to set up and use GPG.
+5.  Before submitting a pull request, ensure that your changes are up-to-date with the latest `main` branch. Rebase your branch if necessary.
+6.  From [aquia-inc/terraform](https://github.com/aquia-inc/terraform) open a pull request setting the `head-repository:`_as your fork_ and the `compare:` as your branch. Provide a clear and concise title and description that follows the [Conventional Commits](https://www.conventionalcommits.org/) standard. Include any relevant issue numbers in the description by using keywords like "Closes #123" or "Fixes #123".
+7.  Request a review from one or more project maintainers or collaborators. Be prepared to address any feedback, suggestions, or requested changes in a timely manner.
+8.  Once your pull request is approved and all tests have passed, a project maintainer will merge your changes into the `main` branch.
+9. Closing a PR will be done via squash merge, the commit message shall follow the [Conventional Commits](https://www.conventionalcommits.org/) standard. This helps maintain a clean and readable commit history. Your commit messages should follow this format: `<type>(<scope>): <description>`. For example:
+    ```
+    fix(auth): resolve login failure due to incorrect token validation
+    ```
+Please note that pull requests that do not follow the guidelines or are incomplete may be closed without explanation. We appreciate your understanding and cooperation in maintaining a high-quality codebase.
 
 ## Issues
 
@@ -59,24 +73,6 @@ For feature requests, please provide the following information:
 4.  If applicable, list any potential drawbacks or limitations of implementing the feature.
 
 Remember that the more detailed and specific your feature request is, the easier it will be for us to evaluate and potentially implement it.
-
-## Pull Requests
-
-We follow a trunk-based development model for our codebase. This means that all changes should be made in short-lived feature branches and merged directly into the `main` branch through pull requests. Please follow these guidelines to ensure a smooth and efficient contribution process:
-
-1.  Create a new branch from the latest `main` branch for each new feature or bug fix. Use a descriptive branch name that reflects the changes being made.
-2.  Keep your changes focused and limited to a single feature or bug fix. If you find another issue while working on your branch, create a new issue and a separate branch for it.
-3.  Commit your changes using the [Conventional Commits](https://www.conventionalcommits.org/) standard. This helps maintain a clean and readable commit history. Your commit messages should follow this format: `<type>(<scope>): <description>`. For example:
-    ```
-    fix(auth): resolve login failure due to incorrect token validation
-    ```
-4.  Sign your commits using GPG. This adds an extra layer of security and ensures the authenticity of your contributions. Follow the [GitHub documentation on signing commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits) to set up and use GPG.
-5.  Before submitting a pull request, ensure that your changes are up-to-date with the latest `main` branch. Rebase your branch if necessary.
-6.  Open a pull request, and provide a clear and concise title and description that follows the Conventional Commits standard. Include any relevant issue numbers in the description by using keywords like "Closes #123" or "Fixes #123".
-7.  Request a review from one or more project maintainers or collaborators. Be prepared to address any feedback, suggestions, or requested changes in a timely manner.
-8.  Once your pull request is approved and all tests have passed, a project maintainer will merge your changes into the `main` branch.
-
-Please note that pull requests that do not follow the guidelines or are incomplete may be closed without explanation. We appreciate your understanding and cooperation in maintaining a high-quality codebase.
 
 ## Coding Standards
 

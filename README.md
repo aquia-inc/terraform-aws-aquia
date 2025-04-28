@@ -1,3 +1,3 @@
-# public-templates
+# Terraform
 
-Standard files to be placed in all public repositories.
+A collection of Terraform modules, and example infrastructure.
