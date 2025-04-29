@@ -3,16 +3,16 @@
 #########################################
 
 resource "aws_iam_account_password_policy" "strict" {
-  count                              = var.enable_password_policy ? 1 : 0
-  minimum_password_length            = 14
-  require_symbols                    = true
-  require_numbers                    = true
-  require_uppercase_characters       = true
-  require_lowercase_characters       = true
-  allow_users_to_change_password     = true
-  hard_expiry                        = true
-  max_password_age                   = 90
-  password_reuse_prevention          = 24
+  count                          = var.enable_password_policy ? 1 : 0
+  minimum_password_length        = 14
+  require_symbols                = true
+  require_numbers                = true
+  require_uppercase_characters   = true
+  require_lowercase_characters   = true
+  allow_users_to_change_password = true
+  hard_expiry                    = true
+  max_password_age               = 90
+  password_reuse_prevention      = 24
 }
 
 #########################################
@@ -52,7 +52,7 @@ data "aws_iam_policy_document" "cloudtrail_bucket_policy" {
   count = var.enable_cloudtrail ? 1 : 0
 
   statement {
-    actions   = ["s3:GetBucketAcl"]
+    actions = ["s3:GetBucketAcl"]
     principals {
       type        = "Service"
       identifiers = ["cloudtrail.amazonaws.com"]
@@ -61,7 +61,7 @@ data "aws_iam_policy_document" "cloudtrail_bucket_policy" {
   }
 
   statement {
-    actions   = ["s3:PutObject"]
+    actions = ["s3:PutObject"]
     principals {
       type        = "Service"
       identifiers = ["cloudtrail.amazonaws.com"]
@@ -167,9 +167,9 @@ resource "aws_securityhub_standards_subscription" "aws_best_practices" {
 #########################################
 
 resource "aws_accessanalyzer_analyzer" "account" {
-  count          = var.enable_access_analyzer ? 1 : 0
-  analyzer_name  = "account-access-analyzer"
-  type           = "ACCOUNT"
+  count         = var.enable_access_analyzer ? 1 : 0
+  analyzer_name = "account-access-analyzer"
+  type          = "ACCOUNT"
 }
 
 #########################################
@@ -177,21 +177,21 @@ resource "aws_accessanalyzer_analyzer" "account" {
 #########################################
 
 resource "aws_iam_policy" "require_mfa" {
-  count        = var.enable_mfa_enforcement ? 1 : 0
-  name         = "require-mfa"
-  description  = "Deny all AWS actions unless MFA is present"
+  count       = var.enable_mfa_enforcement ? 1 : 0
+  name        = "require-mfa"
+  description = "Deny all AWS actions unless MFA is present"
 
   policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
       {
-        Sid: "BlockAllExceptWithMFA",
-        Effect: "Deny",
-        Action: "*",
-        Resource: "*",
-        Condition: {
-          "BoolIfExists": {
-            "aws:MultiFactorAuthPresent": "false"
+        Sid : "BlockAllExceptWithMFA",
+        Effect : "Deny",
+        Action : "*",
+        Resource : "*",
+        Condition : {
+          "BoolIfExists" : {
+            "aws:MultiFactorAuthPresent" : "false"
           }
         }
       }
@@ -209,14 +209,14 @@ resource "aws_sns_topic" "security_alerts" {
 }
 
 resource "aws_cloudwatch_event_rule" "root_usage" {
-  count        = var.enable_root_account_monitoring ? 1 : 0
-  name         = "RootAccountUsage"
-  description  = "Alarm when root account is used"
+  count       = var.enable_root_account_monitoring ? 1 : 0
+  name        = "RootAccountUsage"
+  description = "Alarm when root account is used"
   event_pattern = jsonencode({
-    "detail-type": ["AWS API Call via CloudTrail"],
-    "detail": {
-      "userIdentity": {
-        "type": ["Root"]
+    "detail-type" : ["AWS API Call via CloudTrail"],
+    "detail" : {
+      "userIdentity" : {
+        "type" : ["Root"]
       }
     }
   })
