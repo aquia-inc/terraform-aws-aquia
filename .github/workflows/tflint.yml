@@ -1,13 +1,14 @@
 name: TFLint
 
 on:
-  push:
-    paths:
-      - '**/*.tf'
   pull_request:
-    paths:
-      - '**/*.tf'
-
+    branches:
+      - main
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
 jobs:
   tflint:
     name: Run TFLint
